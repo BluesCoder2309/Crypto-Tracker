@@ -25,6 +25,28 @@ const fetchCoins = async (page = 1) => {
 
 const getFavorites = () => JSON.parse(localStorage.getItem("favorites")) || [];
 
+const saveFavorites = (favorites) => localStorage.setItem('favorites', JSON.stringify(favorites));
+
+//  Toggle for favorite status
+const toggleFavorite = (coinId) =>{
+   let favorites = getFavorites();
+   if(favorites.includes(coinId)) {
+      favorites = favorites.filter(id => id !== coinId);
+   } else {
+      favorites.push(coinId);
+   }
+
+   saveFavorites(favorites);
+   return favorites;
+}
+
+
+const handleFavoriteClick = (coinId, iconElement) => {
+   const favorites = toggleFavorite(coinId);
+   iconElement.classList.toggle('favorite', favorites.includes(coinId));
+}
+
+
 //Class 1 functionality
 //  Render a single coin row (with favorite star icon)
 const renderCoinRow = (coin, index, start, favorites) => {
@@ -33,11 +55,11 @@ const renderCoinRow = (coin, index, start, favorites) => {
    row.innerHTML = `<td>${start + index}</td>
  <td><img src='${coin.image}' alt='${coin.name}' width='24' height='24' /></td>
  <td>${coin.name} </td>
- <td>${coin.current_price.toLocalString} </td>
- <td>${coin.total_volume.toLocalString} </td>
- <td>${coin.market_cap.toLocalString} </td>
+ <td>${coin.current_price.toLocaleString()} </td>
+ <td>${coin.total_volume.toLocaleString()} </td>
+ <td>${coin.market_cap.toLocaleString()} </td>
  <td>
- <i class="fa-solid fa-star favorite-star ${isFavorite ? 'favorite' : ''}" data-id='${coin.id}'></i>
+ <i class="fa-solid fa-star favorite-icon ${isFavorite ? 'favorite' : ''}" data-id='${coin.id}'></i>
  </td>
  `;
  return row;
@@ -74,5 +96,19 @@ const initializePage = async () => {
     renderCoins(coins, currentPage, 25);
 }
 
+
+document.addEventListener('click', (event) => {
+   if(event.target.classList.contains('favorite-icon')){
+      event.stopPropagation();
+      const coinId = event.target.dataset.id;
+      handleFavoriteClick(coinId,event.target);
+   }
+
+   const row = event.target.closest('coin-row');
+   if(row && event.target.classList.contains('favorite-icon')) {
+      const coinId = row.getAttribute('data-id');
+      window.location.href = `coin.html?id-${coinId}`;
+   }
+})
 
 document.addEventListener('DOMContentLoaded',initializePage);

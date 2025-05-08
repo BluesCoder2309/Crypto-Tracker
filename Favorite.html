@@ -29,12 +29,15 @@
             </div>
          </div>
       </nav>
+        <h1 style="text-align: center;">Favorite Coins</h1>
 
-      <main>
-         <table id="crypto-table">
+             <div id='shimmer-container' style='display: none;'></div>
+
+             
+         <table id="favorite-table">
             <thead>
                <tr>
-                  <th>#</th>
+                  <th>Position</th>
                   <th>Icon</th>
                   <th>Name</th>
                   <th>
@@ -45,25 +48,25 @@
                   <th>
                      Volume
                      <i id="sort-volume-asc" class="fa-solid fa-arrow-up"></i>
-                     <i id="sort-volume-desc" class="fa-solid fa-arrow-down"volume
+                     <i id="sort-volume-desc" class="fa-solid fa-arrow-down"></i>
                   </th>
                   <th>
                      Market Cap
                      <i id="sort-market-asc" class="fa-solid fa-arrow-up"></i>
-                     <i id="sort-market-desc" class="fa-solid fa-arrow-down"volume
+                     <i id="sort-market-desc" class="fa-solid fa-arrow-down"></i>
                   </th>
-                  <th>Favorite</th>
+                  <th>Remove</th>
                </tr>
             </thead>
             <tbody>
                <!-- TODO will be filled using JS -->
             </tbody>
          </table>
+         <p id='no-favorite' style='display: none; text-align: center;'>You have'nt liked any coins! Explore and add favorites.</p>
          <!-- Pagination and Simmer need to be done -->
-      </main>
+      
       <!-- CDN for fontAwesome  -->
       <script src="https://kit.fontawesome.com/65aba5f03f.js" crossorigin="anonymous"></script>
-      <
-      <script src="script.js"></script>
+      <script src="Favorite.js"></script>
    </body>
 </html>
