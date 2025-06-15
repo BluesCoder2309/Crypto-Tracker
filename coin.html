@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crypto</title>
+    <link rel="stylesheet" href="coin.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="nav-left">
+        <a href="index.html" class="title">CRYPTO TRACKER</a>
+      </div>
+      <div class="nav-right">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="/Favorite.html" class="nav-link">Liked Coins</a>
+        <div class="search-container">
+          <input
+            type="text"
+            id="search-box"
+            placeholder="Search Coins..."
+            autocomplete="off"
+          />
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <div class="dialog-box" id="search-dialog">
+            <div class="dialog-content">
+              <span id="close-dialog" class="close-btn">&times;</span>
+              <h2>Search Results</h2>
+              <ul id="search-result">
+                <!-- TODO Search Result will be Populated here  -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- Coin Page main section -->
+    <div class="container" id="coin-container" style="display: flex">
+      <div class="sidebar" id="sidebar">
+        <img id="coin-image" src="" alt="Coin img" />
+        <h3 class="heading" id="coin-name"></h3>
+        <p class="description" id="coin-description"></p>
+        <div id="market-data" class="market-data">
+          <div class="market-data-item">
+            <span class="heading">Rank:</span>
+            <span id="coin-rank"></span>
+          </div>
+          <div class="market-data-item">
+            <span class="heading">Current Price:</span>
+            <span id="coin-rank"></span>
+          </div>
+          <div class="market-data-item">
+            <span class="heading">Market Cap:</span>
+            <span id="coin-rank"></span>
+          </div>
+          <div class="button-wrapper">
+            <button id="remove-from-fav-btn">Remove from Favorites</button>
+          </div>
+        </div>
+      </div>
+      <div class="chart-section" id="chart-section">
+        <div class="button-container">
+            <button id="24h">24h</button>
+            <button id="30d">30d</button>
+            <button id="3m">3m</button>
+        </div>
+        <canvas id="coinChart"></canvas>
+      </div>
+    </div>
+
+    <!-- CDN for fontAwesome  -->
+    <script
+      src="https://kit.fontawesome.com/65aba5f03f.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="coin.js"></script>
+  </body>
+</html>
