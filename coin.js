@@ -132,21 +132,21 @@ document.addEventListener("DOMContentLoaded", async () => {
         `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=usd&days=${days}`
       );
       const data = await response.json();
-      updateChart(data.price);
+      updateChart(data.prices);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   }
 
   function updateChart(prices) {
-    const label = prices.map((price) => {
-      let data = new Date(price[0]);
-      return data.toLocalString();
+    const labels = prices.map((price) => {
+      let date = new Date(price[0]);
+      return date.toLocaleDateString();
     });
 
     const data = prices.map((price) => price[1]);
 
-    coinChart.data.label = labels;
+    coinChart.data.labels = labels;
     coinChart.data.datasets[0].data = data;
     coinChart.update();
   }

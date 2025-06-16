@@ -179,3 +179,7 @@ nav {
     border-radius: 10px;
     color: white;
 }
+#coinChart{
+   width: 100% !important;
+  height: 90vh !important;
+}
